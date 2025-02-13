@@ -3,7 +3,10 @@
     "version": "1.0.0",
     "description": "Make RSS Great Again!",
     "keywords": [
-        "RSS"
+        "RSS",
+        "feed",
+        "atom",
+        "json"
     ],
     "homepage": "https://github.com/DIYgod/RSSHub#readme",
     "bugs": {
@@ -17,9 +20,20 @@
     "author": "DIYgod",
     "type": "module",
     "main": "lib/pkg.ts",
+    "types": "lib/pkg.ts",
     "files": [
-        "lib"
+        "lib",
+        "assets/build"
     ],
+    "exports": {
+        ".": {
+            "types": "./lib/pkg.ts",
+            "import": "./lib/pkg.ts"
+        }
+    },
+    "engines": {
+        "node": ">=22"
+    },
     "scripts": {
         "build": "tsx scripts/workflow/build-routes.ts",
         "build:docs": "tsx scripts/workflow/build-docs.ts",

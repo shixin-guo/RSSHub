@@ -1,21 +1,66 @@
 import { setConfig } from '@/config';
+import type { Config } from '@/config';
 import { Hono } from 'hono';
+import logger from '@/utils/logger';
+
+export interface RSSHubOptions {
+    config?: Partial<Config>;
+    routes?: string[];  // Paths to route modules to load
+}
 
 let app: Hono;
+let server: any;
 
-export const init = async (conf) => {
+export const init = async (options: RSSHubOptions = {}) => {
+    if (app) {
+        logger.info('RSSHub already initialized');
+        return;
+    }
+
     setConfig(
         Object.assign(
             {
                 IS_PACKAGE: true,
             },
-            conf
+            options.config
         )
     );
     app = (await import('@/app')).default;
 };
 
-export const request = async (path) => {
+export const start = async (port?: number) => {
+    if (!app) {
+        throw new Error('RSSHub not initialized. Call init() first');
+    }
+    if (server) {
+        logger.info('RSSHub already running');
+        return server;
+    }
+
+    const { serve } = await import('@hono/node-server');
+    server = serve({
+        fetch: app.fetch,
+        port: port || 1200,
+    });
+    logger.info(`RSSHub package server started on port ${port || 1200}`);
+    return server;
+};
+
+export const stop = async () => {
+    if (server) {
+        await server.close();
+        server = null;
+        logger.info('RSSHub package server stopped');
+    }
+};
+
+export const request = async (path: string) => {
+    if (!app) {
+        throw new Error('RSSHub not initialized. Call init() first');
+    }
     const res = await app.request(path);
     return res.json();
 };
+
+// Re-export types that may be useful for consumers
+export type { Config };
