@@ -12,18 +12,13 @@ function buildPackage() {
         execSync('cp lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/utils/', { stdio: 'inherit' });
 
         // First compile TypeScript to ESM
-        execSync('babel lib/pkg.ts --out-file dist/pkg.mjs --presets=@babel/preset-typescript,@babel/preset-env --no-babelrc', { stdio: 'inherit' });
-        execSync('babel lib/config.ts --out-file dist/config.mjs --presets=@babel/preset-typescript,@babel/preset-env --no-babelrc', { stdio: 'inherit' });
-        execSync('babel lib/app.tsx --out-file dist/app.mjs --presets=@babel/preset-typescript,@babel/preset-react,@babel/preset-env --no-babelrc', { stdio: 'inherit' });
-
-        // Then create CJS versions
-        execSync('babel dist/pkg.mjs --out-file dist/pkg.cjs --presets=@babel/preset-env --plugins=@babel/plugin-transform-modules-commonjs', { stdio: 'inherit' });
-        execSync('babel dist/config.mjs --out-file dist/config.cjs --presets=@babel/preset-env --plugins=@babel/plugin-transform-modules-commonjs', { stdio: 'inherit' });
-        execSync('babel dist/app.mjs --out-file dist/app.cjs --presets=@babel/preset-env --plugins=@babel/plugin-transform-modules-commonjs', { stdio: 'inherit' });
+        execSync('babel lib/pkg.ts --out-file dist/pkg.js --presets=@babel/preset-typescript,@babel/preset-env --no-babelrc --source-type module', { stdio: 'inherit' });
+        execSync('babel lib/config.ts --out-file dist/config.js --presets=@babel/preset-typescript,@babel/preset-env --no-babelrc --source-type module', { stdio: 'inherit' });
+        execSync('babel lib/app.tsx --out-file dist/app.js --presets=@babel/preset-typescript,@babel/preset-react,@babel/preset-env --no-babelrc --source-type module', { stdio: 'inherit' });
 
         // Create package entry points
-        execSync('echo "export * from \'./pkg.mjs\';" > dist/index.js', { stdio: 'inherit' });
-        execSync('echo "module.exports = require(\'./pkg.cjs\');" > dist/index.cjs', { stdio: 'inherit' });
+        execSync('echo "export * from \'./pkg.js\';" > dist/index.js', { stdio: 'inherit' });
+        execSync('echo "module.exports = require(\'./pkg.js\');" > dist/index.cjs', { stdio: 'inherit' });
 
         // Copy package.json and clean up test files
         execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });
