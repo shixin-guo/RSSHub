@@ -37,7 +37,7 @@ export const start = (port?: number) => {
         return server;
     }
 
-    server = serve({
+    const server = serve({
         fetch: app.fetch,
         port: port || 1200,
     });
@@ -63,5 +63,4 @@ export const request = async (path: string) => {
 
 // Re-export types that may be useful for consumers
 
-
-export {type Config} from '@/config';
+export { type Config } from '@/config';
