@@ -9,7 +9,8 @@ export interface RSSHubOptions {
 }
 
 let app: Hono;
-let currentServer: any;
+type ServerType = ReturnType<typeof serve>;
+let currentServer: ServerType | undefined;
 
 export const init = async (options: RSSHubOptions = {}) => {
     if (app) {
@@ -28,7 +29,7 @@ export const init = async (options: RSSHubOptions = {}) => {
     app = (await import('@/app')).default;
 };
 
-export const start = (port?: number) => {
+export const start = (port?: number): Promise<ServerType> => {
     if (!app) {
         throw new Error('RSSHub not initialized. Call init() first');
     }
@@ -37,18 +38,19 @@ export const start = (port?: number) => {
         return currentServer;
     }
 
-    currentServer = serve({
+    const server = serve({
         fetch: app.fetch,
         port: port || 1200,
     });
     logger.info(`RSSHub package server started on port ${port || 1200}`);
-    return currentServer;
+    currentServer = server;
+    return Promise.resolve(server);
 };
 
 export const stop = async () => {
     if (currentServer) {
         await currentServer.close();
-        currentServer = null;
+        currentServer = undefined;
         logger.info('RSSHub package server stopped');
     }
 };
