@@ -6,8 +6,8 @@ function buildPackage() {
         // Clean dist
         execSync('rm -rf ./dist', { stdio: 'inherit' });
 
-        // First copy all files
-        execSync('cp -r lib/* dist/ && cp package.json dist/', { stdio: 'inherit' });
+        // First create dist and copy files
+        execSync('mkdir -p dist && cp -r lib/* dist/ && cp package.json dist/', { stdio: 'inherit' });
 
         // Then transpile TypeScript files
         execSync('cd dist && babel pkg.ts config.ts app.ts utils/logger.ts utils/rand-user-agent.ts -d . --extensions ".ts,.tsx"', { stdio: 'inherit' });
