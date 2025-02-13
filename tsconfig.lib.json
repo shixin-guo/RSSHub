@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
+        "composite": true,
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
         "baseUrl": ".",
