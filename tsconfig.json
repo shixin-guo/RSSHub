@@ -1,16 +1,15 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
         "strict": true,
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
-        "paths": {
-            "@/*": ["./lib/*"]
-        },
         "baseUrl": ".",
-        "rootDir": ".",
+        "paths": {
+            "@/*": ["lib/*"]
+        },
         "esModuleInterop": true,
         "noImplicitAny": false,
         "outDir": "./dist",
