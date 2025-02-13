@@ -16,7 +16,7 @@ function buildPackage() {
         execSync('cp lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/utils/', { stdio: 'inherit' });
 
         // Then transpile with babel
-        execSync('babel dist/lib --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });
+        execSync('babel dist --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });
 
         // Generate type definitions
         execSync('tsc --project tsconfig.json --declaration --emitDeclarationOnly --outDir dist', { stdio: 'inherit' });

@@ -27,10 +27,10 @@
     },
     "include": [
         "./dist/index.ts",
-        "./dist/lib/config.ts",
-        "./dist/lib/app.tsx",
-        "./dist/lib/utils/logger.ts",
-        "./dist/lib/utils/rand-user-agent.ts"
+        "./dist/config.ts",
+        "./dist/app.tsx",
+        "./dist/utils/logger.ts",
+        "./dist/utils/rand-user-agent.ts"
     ],
     "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*"]
 }
