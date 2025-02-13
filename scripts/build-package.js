@@ -10,10 +10,10 @@ function buildPackage() {
         execSync('mkdir -p dist', { stdio: 'inherit' });
 
         // Then transpile core files
-        execSync('babel lib/pkg.ts lib/config.ts lib/app.tsx lib/utils/logger.ts lib/utils/rand-user-agent.ts --out-dir dist --extensions ".ts,.tsx" --copy-files', { stdio: 'inherit' });
+        execSync('babel lib --out-dir dist --extensions ".ts,.tsx" --copy-files --config-file ./babel.config.js', { stdio: 'inherit' });
 
-        // Copy additional files
-        execSync('cp -r lib/routes lib/utils lib/middleware lib/views dist/ && cp package.json dist/', { stdio: 'inherit' });
+        // Copy package.json and clean up test files
+        execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });
 
         // Create type definitions
         execSync('echo "declare module \'rsshub\';" > dist/index.d.ts', { stdio: 'inherit' });
