@@ -11,10 +11,12 @@ const logger = winston.createLogger({
         ...(config.noLogfiles
             ? []
             : [
+                  // @ts-ignore - winston types are incorrect
                   new winston.transports.File({
                       filename: path.resolve('logs/error.log'),
                       level: 'error',
                   }),
+                  // @ts-ignore - winston types are incorrect
                   new winston.transports.File({
                       filename: path.resolve('logs/combined.log'),
                   }),
@@ -23,6 +25,7 @@ const logger = winston.createLogger({
         ...(config.isPackage
             ? []
             : [
+                  // @ts-ignore - winston types are incorrect
                   new winston.transports.Console({
                       format: winston.format.combine(
                           winston.format.colorize(),
