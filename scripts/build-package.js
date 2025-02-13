@@ -9,14 +9,14 @@ function buildPackage() {
         // First create dist directory
         execSync('mkdir -p dist', { stdio: 'inherit' });
 
-        // First compile TypeScript
-        execSync('tsc --project tsconfig.json', { stdio: 'inherit' });
+        // First copy only the files we need
+        execSync('cp lib/pkg.ts lib/config.ts lib/app.ts lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/', { stdio: 'inherit' });
 
         // Then transpile with babel
-        execSync('babel dist --out-dir dist --extensions ".js,.jsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });
+        execSync('babel dist --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });
 
-        // Copy package.json and clean up test files
-        execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });
+        // Generate type definitions
+        execSync('tsc dist/pkg.ts --declaration --emitDeclarationOnly --outDir dist', { stdio: 'inherit' });
 
         // Copy package.json and clean up test files
         execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });

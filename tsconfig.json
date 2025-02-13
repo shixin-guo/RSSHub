@@ -19,7 +19,9 @@
         "noEmit": false,
         "strict": false,
         "noImplicitAny": false,
-        "types": ["node"]
+        "types": ["node"],
+        "allowSyntheticDefaultImports": true,
+        "isolatedModules": true
     },
     "include": [
         "./lib/pkg.ts",
