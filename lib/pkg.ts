@@ -35,7 +35,7 @@ export const start = (port?: number): Promise<ServerType> => {
     }
     if (currentServer) {
         logger.info('RSSHub already running');
-        return currentServer;
+        return Promise.resolve(currentServer);
     }
 
     const server = serve({
