@@ -63,5 +63,6 @@ const request = async (path: string) => {
     return res.json();
 };
 
-export { init, start, stop, request };
+const pkg = { init, start, stop, request };
+export default pkg;
 export type { Config } from './config';

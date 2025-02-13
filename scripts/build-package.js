@@ -33,8 +33,8 @@ function buildPackage() {
 
         // Create a CJS wrapper for better compatibility
         execSync(
-            `echo "const { init, start, stop, request } = await import('./index.js');
-module.exports = { init, start, stop, request };" > dist/index.cjs`,
+            `echo "const { default: pkg } = require('./index.js');
+module.exports = pkg;" > dist/index.cjs`,
             { stdio: 'inherit' }
         );
     } catch {
