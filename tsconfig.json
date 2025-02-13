@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "bundler",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
         "baseUrl": ".",
@@ -16,7 +16,7 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "allowJs": true,
-        "noEmit": false
+        "strict": false
     },
     "include": ["./lib/**/*.ts", "./lib/**/*.tsx"],
     "exclude": ["node_modules", "*.test.*"]
