@@ -2,24 +2,22 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "node",
-        "allowJs": true,
+        "moduleResolution": "bundler",
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
         "baseUrl": ".",
         "paths": {
             "@/*": ["./lib/*"]
         },
-        "rootDir": "./lib",
         "outDir": "./dist",
         "esModuleInterop": true,
         "skipLibCheck": true,
         "declaration": true,
         "sourceMap": true,
         "resolveJsonModule": true,
-        "strict": true,
-        "noImplicitAny": false
+        "allowJs": true,
+        "noEmit": false
     },
-    "include": ["./lib/**/*"],
+    "include": ["./lib/**/*.ts", "./lib/**/*.tsx"],
     "exclude": ["node_modules", "*.test.*"]
 }

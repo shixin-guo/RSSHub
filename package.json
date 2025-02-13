@@ -35,7 +35,7 @@
         "node": ">=22"
     },
     "scripts": {
-        "build": "rm -rf dist && tsc && tsx scripts/workflow/build-routes.ts && cp -r lib/routes dist/",
+        "build": "rm -rf dist && tsc --project tsconfig.json && tsx scripts/workflow/build-routes.ts",
         "prepublishOnly": "pnpm build",
         "build:docs": "tsx scripts/workflow/build-docs.ts",
         "dev": "cross-env NODE_ENV=dev tsx watch --inspect --clear-screen=false lib/index.ts",
