@@ -1,4 +1,4 @@
-import { setConfig } from './config';
+import { setConfig } from './config.js';
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 
