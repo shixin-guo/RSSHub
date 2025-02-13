@@ -11,7 +11,8 @@ function buildPackage() {
 
         // First copy only the package files
         execSync('mkdir -p dist/lib/utils', { stdio: 'inherit' });
-        execSync('cp lib/pkg.ts lib/config.ts lib/app.tsx lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/lib/', { stdio: 'inherit' });
+        execSync('cp lib/pkg.ts dist/', { stdio: 'inherit' });
+        execSync('cp lib/config.ts lib/app.tsx lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/lib/', { stdio: 'inherit' });
 
         // Then transpile with babel
         execSync('babel dist/lib --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });

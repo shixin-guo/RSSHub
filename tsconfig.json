@@ -22,7 +22,8 @@
         "types": ["node"],
         "allowSyntheticDefaultImports": true,
         "isolatedModules": true,
-        "preserveSymlinks": true
+        "preserveSymlinks": true,
+        "emitDeclarationOnly": true
     },
     "include": [
         "./lib/pkg.ts",
