@@ -12,11 +12,10 @@ function buildPackage() {
         execSync('cp lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/utils/', { stdio: 'inherit' });
 
         // First compile TypeScript to ESM
-        execSync('babel dist --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });
+        execSync('babel dist --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs --presets=@babel/preset-typescript,@babel/preset-react --no-babelrc', { stdio: 'inherit' });
 
         // Create CJS version
-        execSync('cp dist/index.js dist/index.cjs', { stdio: 'inherit' });
-        execSync('babel dist/index.cjs --out-file dist/index.cjs --presets=@babel/preset-env --plugins=@babel/plugin-transform-modules-commonjs', { stdio: 'inherit' });
+        execSync('babel dist/index.js --out-file dist/index.cjs --presets=@babel/preset-env --plugins=@babel/plugin-transform-modules-commonjs', { stdio: 'inherit' });
 
         // Copy package.json and clean up test files
         execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });
