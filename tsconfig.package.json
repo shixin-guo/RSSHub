@@ -21,7 +21,11 @@
         "noImplicitAny": false
     },
     "include": [
-        "./lib/pkg.ts"
+        "./lib/pkg.ts",
+        "./lib/config.ts",
+        "./lib/app.ts",
+        "./lib/utils/logger.ts",
+        "./lib/utils/rand-user-agent.ts"
     ],
     "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*"]
 }
