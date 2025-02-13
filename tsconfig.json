@@ -17,13 +17,21 @@
         "resolveJsonModule": true,
         "allowJs": true,
         "noEmit": false,
-        "isolatedModules": true
+        "isolatedModules": true,
+        "strict": false,
+        "noImplicitAny": false
     },
     "include": [
         "./lib/pkg.ts",
         "./lib/config.ts",
         "./lib/app.ts",
-        "./lib/utils/logger.ts"
+        "./lib/utils/logger.ts",
+        "./lib/utils/rand-user-agent.ts",
+        "./lib/utils/request-rewriter/**/*",
+        "./lib/utils/proxy/**/*",
+        "./lib/utils/ofetch.ts",
+        "./lib/middleware/**/*",
+        "./lib/views/**/*"
     ],
     "exclude": ["node_modules", "*.test.*"]
 }
