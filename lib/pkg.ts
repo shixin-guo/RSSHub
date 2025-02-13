@@ -3,9 +3,6 @@ import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 import logger from './utils/logger';
 
-// Re-export types
-export type { Config } from './config';
-
 export interface RSSHubOptions {
     config?: Partial<Config>;
     routes?: string[]; // Paths to route modules to load
