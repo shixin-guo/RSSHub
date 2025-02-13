@@ -10,10 +10,10 @@ function buildPackage() {
         execSync('mkdir -p dist', { stdio: 'inherit' });
 
         // Then transpile core files
-        execSync('babel lib --out-dir dist --extensions ".ts,.tsx" --copy-files --config-file ./babel.config.cjs --out-file-extension .js', { stdio: 'inherit' });
+        execSync('babel lib --out-dir dist --extensions ".ts,.tsx" --copy-files --config-file ./babel.config.cjs', { stdio: 'inherit' });
 
-        // Generate CJS version
-        execSync('babel lib/pkg.ts --out-file dist/pkg.cjs --config-file ./babel.config.cjs --out-file-extension .cjs', { stdio: 'inherit' });
+        // Generate proper exports
+        execSync('tsc lib/pkg.ts --declaration --emitDeclarationOnly --outDir dist', { stdio: 'inherit' });
 
         // Copy package.json and clean up test files
         execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });
