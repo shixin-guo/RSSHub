@@ -18,6 +18,11 @@
         "allowJs": true,
         "strict": false
     },
-    "include": ["./lib/**/*.ts", "./lib/**/*.tsx"],
+    "include": [
+        "./lib/pkg.ts",
+        "./lib/config.ts",
+        "./lib/app.ts",
+        "./lib/utils/logger.ts"
+    ],
     "exclude": ["node_modules", "*.test.*"]
 }
