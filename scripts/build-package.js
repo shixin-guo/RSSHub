@@ -6,11 +6,14 @@ function buildPackage() {
         // Clean dist
         execSync('rm -rf ./dist', { stdio: 'inherit' });
 
-        // First create dist and copy files
-        execSync('mkdir -p dist && cp -r lib/* dist/ && cp package.json dist/', { stdio: 'inherit' });
+        // First create dist directory
+        execSync('mkdir -p dist', { stdio: 'inherit' });
 
-        // Then transpile TypeScript files
-        execSync('cd dist && babel pkg.ts config.ts app.ts utils/logger.ts utils/rand-user-agent.ts -d . --extensions ".ts,.tsx"', { stdio: 'inherit' });
+        // Then transpile core files
+        execSync('babel lib/pkg.ts lib/config.ts lib/app.ts lib/utils/logger.ts lib/utils/rand-user-agent.ts --out-dir dist --extensions ".ts,.tsx" --copy-files', { stdio: 'inherit' });
+
+        // Copy additional files
+        execSync('cp -r lib/routes lib/utils lib/middleware lib/views dist/ && cp package.json dist/', { stdio: 'inherit' });
 
         // Create type definitions
         execSync('echo "declare module \'rsshub\';" > dist/index.d.ts', { stdio: 'inherit' });
