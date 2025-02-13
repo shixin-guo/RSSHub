@@ -21,9 +21,14 @@
         "noImplicitAny": false,
         "types": ["node"]
     },
-    "include": ["./lib/pkg.ts"],
-    "references": [
-        { "path": "./tsconfig.lib.json" }
+    "include": [
+        "./lib/**/*.ts",
+        "./lib/**/*.tsx"
     ],
-    "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*"]
+    "exclude": [
+        "node_modules",
+        "**/*.test.*",
+        "**/*.spec.*",
+        "./lib/pkg.ts"
+    ]
 }
