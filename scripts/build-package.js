@@ -10,7 +10,7 @@ function buildPackage() {
         execSync('mkdir -p dist', { stdio: 'inherit' });
 
         // Then transpile core files
-        execSync('babel lib --out-dir dist --extensions ".ts,.tsx" --copy-files --config-file ./babel.config.js', { stdio: 'inherit' });
+        execSync('babel lib --out-dir dist --extensions ".ts,.tsx" --copy-files --config-file ./babel.config.cjs', { stdio: 'inherit' });
 
         // Copy package.json and clean up test files
         execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });
