@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./lib/*"]
+            "@/*": ["lib/*"]
         },
         "outDir": "./dist",
         "esModuleInterop": true,
@@ -16,7 +16,8 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "allowJs": true,
-        "strict": false
+        "noEmit": false,
+        "isolatedModules": true
     },
     "include": [
         "./lib/pkg.ts",
