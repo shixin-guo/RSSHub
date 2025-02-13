@@ -10,7 +10,7 @@ function buildPackage() {
         execSync('mkdir -p dist', { stdio: 'inherit' });
 
         // Then transpile core files
-        execSync('babel lib/pkg.ts lib/config.ts lib/app.ts lib/utils/logger.ts lib/utils/rand-user-agent.ts --out-dir dist --extensions ".ts,.tsx" --copy-files', { stdio: 'inherit' });
+        execSync('babel lib/pkg.ts lib/config.ts lib/app.tsx lib/utils/logger.ts lib/utils/rand-user-agent.ts --out-dir dist --extensions ".ts,.tsx" --copy-files', { stdio: 'inherit' });
 
         // Copy additional files
         execSync('cp -r lib/routes lib/utils lib/middleware lib/views dist/ && cp package.json dist/', { stdio: 'inherit' });
