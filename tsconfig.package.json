@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "composite": true,
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "bundler",
@@ -18,14 +19,15 @@
         "allowJs": true,
         "noEmit": false,
         "strict": false,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "noEmitOnError": false,
+        "incremental": true,
+        "types": ["node"],
+        "allowSyntheticDefaultImports": true
     },
     "include": [
-        "./lib/pkg.ts",
-        "./lib/config.ts",
-        "./lib/app.ts",
-        "./lib/utils/logger.ts",
-        "./lib/utils/rand-user-agent.ts"
+        "./lib/**/*.ts",
+        "./lib/**/*.tsx"
     ],
     "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*"]
 }

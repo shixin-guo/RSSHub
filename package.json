@@ -35,7 +35,7 @@
         "node": ">=22"
     },
     "scripts": {
-        "build": "rm -rf dist && tsc -p tsconfig.package.json && cp -r lib/routes dist/ && cp -r lib/utils dist/ && cp -r lib/middleware dist/ && cp -r lib/views dist/",
+        "build": "node scripts/build-package.js",
         "prepublishOnly": "pnpm build",
         "build:docs": "tsx scripts/workflow/build-docs.ts",
         "dev": "cross-env NODE_ENV=dev tsx watch --inspect --clear-screen=false lib/index.ts",
