@@ -28,7 +28,8 @@
         "skipDefaultLibCheck": true,
         "checkJs": false,
         "ignoreDeprecations": "5.0",
-        "noStrictGenericChecks": true
+        "skipLibCheck": true,
+        "noImplicitThis": false
     },
     "include": [
         "./dist/index.ts",
