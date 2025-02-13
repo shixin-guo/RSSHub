@@ -3,7 +3,7 @@
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "node",
-        "jsx": "preserve",
+        "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
         "baseUrl": ".",
         "paths": {
@@ -21,7 +21,8 @@
         "noImplicitAny": false,
         "types": ["node"],
         "allowSyntheticDefaultImports": true,
-        "isolatedModules": true
+        "isolatedModules": true,
+        "preserveSymlinks": true
     },
     "include": [
         "./lib/pkg.ts",

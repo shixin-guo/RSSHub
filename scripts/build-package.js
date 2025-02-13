@@ -9,8 +9,9 @@ function buildPackage() {
         // First create dist directory
         execSync('mkdir -p dist', { stdio: 'inherit' });
 
-        // First copy lib directory structure
-        execSync('cp -r lib dist/', { stdio: 'inherit' });
+        // First copy only the package files
+        execSync('mkdir -p dist/lib/utils', { stdio: 'inherit' });
+        execSync('cp lib/pkg.ts lib/config.ts lib/app.tsx lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/lib/', { stdio: 'inherit' });
 
         // Then transpile with babel
         execSync('babel dist/lib --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });

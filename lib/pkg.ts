@@ -1,10 +1,10 @@
-import { setConfig, type Config } from './config';
+import { setConfig } from './config';
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 import logger from './utils/logger';
 
 export interface RSSHubOptions {
-    config?: Partial<Config>;
+    config?: any;
     routes?: string[]; // Paths to route modules to load
 }
 
