@@ -6,14 +6,11 @@ function buildPackage() {
         // Clean dist
         execSync('rm -rf ./dist', { stdio: 'inherit' });
 
-        // First copy all files
-        execSync('cp -r lib dist/ && cp package.json dist/', { stdio: 'inherit' });
+        // First compile TypeScript files
+        execSync('tsc -p tsconfig.package.json', { stdio: 'inherit' });
 
-        // Then transpile TypeScript files
-        execSync(
-            'tsc --allowJs --noEmit false --noEmitOnError false --skipLibCheck --jsx react-jsx --target ESNext --module ESNext --moduleResolution node ./dist/pkg.ts ./dist/config.ts ./dist/app.ts ./dist/utils/logger.ts ./dist/utils/rand-user-agent.ts',
-            { stdio: 'inherit' }
-        );
+        // Then copy additional files
+        execSync('cp package.json dist/ && cp -r lib/routes lib/utils lib/middleware lib/views dist/', { stdio: 'inherit' });
     } catch {
         process.exit(1);
     }

@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
         "baseUrl": ".",
@@ -23,7 +23,8 @@
         "types": ["node"],
         "allowSyntheticDefaultImports": true,
         "preserveSymlinks": true,
-        "checkJs": false
+        "checkJs": false,
+        "isolatedModules": true
     },
     "include": [
         "./lib/pkg.ts",
