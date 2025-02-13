@@ -26,11 +26,11 @@
         "emitDeclarationOnly": true
     },
     "include": [
-        "./lib/pkg.ts",
-        "./lib/config.ts",
-        "./lib/app.tsx",
-        "./lib/utils/logger.ts",
-        "./lib/utils/rand-user-agent.ts"
+        "./dist/index.ts",
+        "./dist/lib/config.ts",
+        "./dist/lib/app.tsx",
+        "./dist/lib/utils/logger.ts",
+        "./dist/lib/utils/rand-user-agent.ts"
     ],
     "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*"]
 }

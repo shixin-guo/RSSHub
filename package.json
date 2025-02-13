@@ -20,16 +20,16 @@
     "author": "DIYgod",
     "type": "module",
     "type": "module",
-    "main": "./dist/pkg.js",
-    "types": "./dist/pkg.d.ts",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "files": [
         "dist"
     ],
     "exports": {
         ".": {
-            "types": "./dist/pkg.d.ts",
-            "import": "./dist/pkg.js",
-            "require": "./dist/pkg.js"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.js"
         }
     },
     "engines": {
