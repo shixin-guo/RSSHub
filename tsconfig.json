@@ -26,7 +26,7 @@
     "include": [
         "./lib/pkg.ts",
         "./lib/config.ts",
-        "./lib/app.ts",
+        "./lib/app.tsx",
         "./lib/utils/logger.ts",
         "./lib/utils/rand-user-agent.ts"
     ],
