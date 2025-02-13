@@ -1,7 +1,7 @@
-import { setConfig } from './lib/config';
+import { setConfig } from './config';
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
-import logger from './lib/utils/logger';
+import logger from './utils/logger';
 
 export interface RSSHubOptions {
     config?: any;
@@ -65,4 +65,4 @@ export const request = async (path: string) => {
 
 // Re-export types that may be useful for consumers
 
-export type { Config } from './lib/config';
+export type { Config } from './config';
