@@ -9,6 +9,7 @@
         "paths": {
             "@/*": ["./lib/*"]
         },
+        "baseUrl": ".",
         "esModuleInterop": true,
         "noImplicitAny": false,
         "outDir": "./dist",
@@ -20,6 +21,6 @@
         "resolveJsonModule": true,
         "isolatedModules": true
     },
-    "include": ["./lib/**/*", "./api/vercel.ts"],
+    "include": ["./lib/**/*", "./api/vercel.ts", "./types/**/*"],
     "exclude": ["node_modules", "*.test.*"]
 }
