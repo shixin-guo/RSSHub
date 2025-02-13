@@ -19,8 +19,8 @@
     "license": "MIT",
     "author": "DIYgod",
     "type": "module",
-    "type": "module",
-    "main": "./dist/index.js",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
         "dist"
@@ -29,7 +29,8 @@
         ".": {
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
-            "require": "./dist/index.js"
+            "require": "./dist/index.cjs",
+            "default": "./dist/index.js"
         }
     },
     "engines": {
@@ -156,6 +157,7 @@
         "@babel/preset-env": "7.26.8",
         "@babel/preset-react": "^7.26.3",
         "@babel/preset-typescript": "7.26.0",
+        "@babel/plugin-transform-modules-commonjs": "^7.23.3",
         "@bbob/types": "4.2.0",
         "@eslint/eslintrc": "3.2.0",
         "@eslint/js": "9.20.0",

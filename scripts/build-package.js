@@ -12,7 +12,7 @@ function buildPackage() {
         execSync('cp lib/utils/logger.ts lib/utils/rand-user-agent.ts dist/utils/', { stdio: 'inherit' });
 
         // Transpile with babel
-        execSync('babel dist --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });
+        execSync('babel dist --out-dir dist --extensions ".ts,.tsx" --config-file ./babel.config.cjs --plugins @babel/plugin-transform-modules-commonjs', { stdio: 'inherit' });
 
         // Copy package.json and clean up test files
         execSync('cp package.json dist/ && rm -rf dist/**/*.test.* dist/**/*.spec.*', { stdio: 'inherit' });
