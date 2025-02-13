@@ -85,14 +85,14 @@ describe('pkg', () => {
         it('should handle multiple init calls gracefully', async () => {
             await init();
             await init(); // Should not throw
-            const server = await start(3003);
+            const server = start(3003);
             expect(server).toBeDefined();
         });
 
         it('should handle multiple start calls gracefully', async () => {
             await init();
-            const server1 = await start(3004);
-            const server2 = await start(3004); // Should return same server
+            const server1 = start(3004);
+            const server2 = start(3004); // Should return same server
             expect(server1).toBe(server2);
         });
 
