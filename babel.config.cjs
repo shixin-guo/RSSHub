@@ -2,7 +2,7 @@ module.exports = {
     presets: [
         ['@babel/preset-env', { 
             targets: { node: 'current' },
-            modules: 'commonjs'
+            modules: false
         }],
         '@babel/preset-typescript',
         ['@babel/preset-react', {
@@ -10,5 +10,6 @@ module.exports = {
             throwIfNamespace: false
         }]
     ],
+    plugins: ['@babel/plugin-transform-modules-commonjs'],
     ignore: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx']
 };
