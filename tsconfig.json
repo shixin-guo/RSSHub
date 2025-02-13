@@ -13,7 +13,9 @@
         "noImplicitAny": false,
         "outDir": "./dist",
         "skipLibCheck": true,
-        "noEmit": true,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
         "incremental": true,
         "resolveJsonModule": true,
         "isolatedModules": true

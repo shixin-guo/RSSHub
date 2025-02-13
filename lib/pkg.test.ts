@@ -10,7 +10,7 @@ describe('pkg', () => {
         await init({
             config: {
                 ua: 'mock',
-            }
+            },
         });
         const { config } = await import('./config');
         expect(config.ua).toBe('mock');

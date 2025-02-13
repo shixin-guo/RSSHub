@@ -1,11 +1,11 @@
-import { setConfig } from '@/config';
-import type { Config } from '@/config';
+import { setConfig, type Config } from '@/config';
 import { Hono } from 'hono';
+import { serve } from '@hono/node-server';
 import logger from '@/utils/logger';
 
 export interface RSSHubOptions {
     config?: Partial<Config>;
-    routes?: string[];  // Paths to route modules to load
+    routes?: string[]; // Paths to route modules to load
 }
 
 let app: Hono;
@@ -28,7 +28,7 @@ export const init = async (options: RSSHubOptions = {}) => {
     app = (await import('@/app')).default;
 };
 
-export const start = async (port?: number) => {
+export const start = (port?: number) => {
     if (!app) {
         throw new Error('RSSHub not initialized. Call init() first');
     }
@@ -37,7 +37,6 @@ export const start = async (port?: number) => {
         return server;
     }
 
-    const { serve } = await import('@hono/node-server');
     server = serve({
         fetch: app.fetch,
         port: port || 1200,
@@ -63,4 +62,6 @@ export const request = async (path: string) => {
 };
 
 // Re-export types that may be useful for consumers
-export type { Config };
+
+
+export {type Config} from '@/config';
