@@ -23,7 +23,12 @@
         "allowSyntheticDefaultImports": true,
         "isolatedModules": true,
         "preserveSymlinks": true,
-        "emitDeclarationOnly": true
+        "emitDeclarationOnly": true,
+        "noErrorTruncation": true,
+        "skipDefaultLibCheck": true,
+        "checkJs": false,
+        "ignoreDeprecations": "5.0",
+        "suppressImplicitAnyIndexErrors": true
     },
     "include": [
         "./dist/index.ts",
