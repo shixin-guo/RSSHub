@@ -24,7 +24,17 @@ function buildPackage() {
             export function start(port?: number): Promise<void>;
             export function stop(): Promise<void>;
             export function request(path: string): Promise<any>;
+            export interface Config {
+                [key: string]: any;
+            }
         }" > dist/index.d.ts`,
+            { stdio: 'inherit' }
+        );
+
+        // Create a CJS wrapper for better compatibility
+        execSync(
+            `echo "const { init, start, stop, request } = await import('./index.js');
+module.exports = { init, start, stop, request };" > dist/index.cjs`,
             { stdio: 'inherit' }
         );
     } catch {
