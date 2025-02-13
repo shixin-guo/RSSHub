@@ -27,15 +27,15 @@
     ],
     "exports": {
         ".": {
-            "types": "./dist/lib/pkg.d.ts",
-            "import": "./dist/lib/pkg.js"
+            "types": "./dist/pkg.d.ts",
+            "import": "./dist/pkg.js"
         }
     },
     "engines": {
         "node": ">=22"
     },
     "scripts": {
-        "build": "tsc && tsx scripts/workflow/build-routes.ts",
+        "build": "rm -rf dist && tsc && tsx scripts/workflow/build-routes.ts",
         "prepublishOnly": "pnpm build",
         "build:docs": "tsx scripts/workflow/build-docs.ts",
         "dev": "cross-env NODE_ENV=dev tsx watch --inspect --clear-screen=false lib/index.ts",
