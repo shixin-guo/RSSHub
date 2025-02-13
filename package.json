@@ -19,16 +19,17 @@
     "license": "MIT",
     "author": "DIYgod",
     "type": "module",
-    "main": "dist/pkg.js",
-    "types": "dist/pkg.d.ts",
+    "type": "module",
+    "main": "./dist/pkg.js",
+    "types": "./dist/pkg.d.ts",
     "files": [
-        "dist",
-        "assets/build"
+        "dist"
     ],
     "exports": {
         ".": {
             "types": "./dist/pkg.d.ts",
-            "import": "./dist/pkg.js"
+            "import": "./dist/pkg.js",
+            "require": "./dist/pkg.cjs"
         }
     },
     "engines": {
@@ -150,7 +151,10 @@
         "zod": "3.24.2"
     },
     "devDependencies": {
+        "@babel/cli": "^7.26.4",
+        "@babel/core": "^7.26.8",
         "@babel/preset-env": "7.26.8",
+        "@babel/preset-react": "^7.26.3",
         "@babel/preset-typescript": "7.26.0",
         "@bbob/types": "4.2.0",
         "@eslint/eslintrc": "3.2.0",
