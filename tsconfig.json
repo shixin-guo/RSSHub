@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "bundler",
+        "moduleResolution": "node",
         "allowJs": true,
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
@@ -10,14 +10,16 @@
         "paths": {
             "@/*": ["./lib/*"]
         },
-        "rootDir": ".",
+        "rootDir": "./lib",
         "outDir": "./dist",
         "esModuleInterop": true,
         "skipLibCheck": true,
         "declaration": true,
         "sourceMap": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "strict": true,
+        "noImplicitAny": false
     },
-    "include": ["./lib/**/*", "./api/vercel.ts", "./types/**/*"],
+    "include": ["./lib/**/*"],
     "exclude": ["node_modules", "*.test.*"]
 }
