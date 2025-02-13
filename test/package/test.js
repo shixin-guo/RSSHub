@@ -1,5 +1,4 @@
-import pkg from 'rsshub';
-const { init, start, stop, request } = pkg;
+import { init, start, stop, request } from 'rsshub';
 
 async function test() {
     try {
