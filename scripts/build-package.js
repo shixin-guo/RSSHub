@@ -32,11 +32,7 @@ function buildPackage() {
         );
 
         // Create a CJS wrapper for better compatibility
-        execSync(
-            `echo "const { init, start, stop, request } = await import('./index.js');
-module.exports = { init, start, stop, request };" > dist/index.cjs`,
-            { stdio: 'inherit' }
-        );
+        execSync(`echo "export { default } from './index.js';" > dist/index.cjs`, { stdio: 'inherit' });
     } catch {
         process.exit(1);
     }
