@@ -20,10 +20,14 @@ function buildPackage() {
         // Create simple type definitions that avoid type checking
         execSync(
             `echo "declare module 'rsshub' {
-            export function init(options?: any): Promise<void>;
-            export function start(port?: number): Promise<void>;
-            export function stop(): Promise<void>;
-            export function request(path: string): Promise<any>;
+            interface RSSHub {
+                init(options?: any): Promise<void>;
+                start(port?: number): Promise<void>;
+                stop(): Promise<void>;
+                request(path: string): Promise<any>;
+            }
+            declare const pkg: RSSHub;
+            export default pkg;
             export interface Config {
                 [key: string]: any;
             }
