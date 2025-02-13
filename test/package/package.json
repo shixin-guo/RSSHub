@@ -1,7 +1,7 @@
 {
     "name": "rsshub-test",
     "private": true,
-    "type": "module",
+    "type": "commonjs",
     "scripts": {
         "test": "node test.js"
     },
