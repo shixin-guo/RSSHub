@@ -27,11 +27,17 @@
         "./lib/app.ts",
         "./lib/utils/logger.ts",
         "./lib/utils/rand-user-agent.ts",
-        "./lib/utils/request-rewriter/**/*",
-        "./lib/utils/proxy/**/*",
+        "./lib/utils/request-rewriter/fetch.ts",
+        "./lib/utils/request-rewriter/get.ts",
+        "./lib/utils/request-rewriter/index.ts",
+        "./lib/utils/proxy/unify-proxy.ts",
+        "./lib/utils/proxy/pac-proxy.ts",
+        "./lib/utils/proxy/index.ts",
         "./lib/utils/ofetch.ts",
-        "./lib/middleware/**/*",
-        "./lib/views/**/*"
+        "./lib/middleware/parameter.ts",
+        "./lib/views/atom.tsx",
+        "./lib/views/rss.tsx",
+        "./lib/views/json.ts"
     ],
-    "exclude": ["node_modules", "*.test.*"]
+    "exclude": ["node_modules", "**/*.test.*", "**/*.spec.*"]
 }
