@@ -28,14 +28,16 @@ await stop();
 ## Installation
 
 ```bash
-npm install rsshub
+npm install rsshub@latest
 ```
 
 Or with other package managers:
 ```bash
-pnpm add rsshub
-yarn add rsshub
+pnpm add rsshub@latest
+yarn add rsshub@latest
 ```
+
+Note: This package requires Node.js version 22 or higher.
 
 ## API Reference
 

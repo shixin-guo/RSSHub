@@ -18,7 +18,7 @@
     },
     "license": "MIT",
     "author": "DIYgod",
-    "type": "commonjs",
+    "type": "module",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -28,21 +28,15 @@
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.js"
-            },
-            "require": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.cjs"
-            }
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         }
     },
     "engines": {
         "node": ">=22"
     },
     "scripts": {
-        "build": "node scripts/build-package.js",
+        "build": "node scripts/build-package.mjs",
         "prepublishOnly": "pnpm build",
         "build:docs": "tsx scripts/workflow/build-docs.ts",
         "dev": "cross-env NODE_ENV=dev tsx watch --inspect --clear-screen=false lib/index.ts",

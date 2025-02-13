@@ -1,4 +1,9 @@
-const { execSync } = require('node:child_process');
+import { execSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 function buildPackage() {
     try {
@@ -41,10 +46,8 @@ function buildPackage() {
         }" > dist/index.d.ts`,
             { stdio: 'inherit' }
         );
-
-        // Create a CJS wrapper for better compatibility
-        execSync(`echo "module.exports = require('./index.js');" > dist/index.cjs`, { stdio: 'inherit' });
-    } catch {
+    } catch (error) {
+        console.error('Build failed:', error);
         process.exit(1);
     }
 }
