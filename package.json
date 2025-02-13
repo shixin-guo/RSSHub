@@ -27,8 +27,8 @@
     ],
     "exports": {
         ".": {
-            "types": "./dist/pkg.d.ts",
-            "import": "./dist/pkg.js"
+            "types": "./dist/lib/pkg.d.ts",
+            "import": "./dist/lib/pkg.js"
         }
     },
     "engines": {

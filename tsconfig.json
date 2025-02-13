@@ -3,15 +3,14 @@
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "node",
-        "allowJs": true,
         "strict": true,
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
         "baseUrl": ".",
         "paths": {
-            "@/*": ["lib/*"]
+            "@/*": ["./lib/*"]
         },
-        "rootDirs": ["lib", "types"],
+        "rootDir": ".",
         "esModuleInterop": true,
         "noImplicitAny": false,
         "outDir": "./dist",
