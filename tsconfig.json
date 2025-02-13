@@ -10,7 +10,7 @@
         "paths": {
             "@/*": ["./lib/*"]
         },
-        "rootDir": "./lib",
+        "rootDir": ".",
         "outDir": "./dist",
         "esModuleInterop": true,
         "skipLibCheck": true,

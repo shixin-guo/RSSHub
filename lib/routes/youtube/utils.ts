@@ -123,7 +123,7 @@ export const getSubscriptions = async (part, cache) => {
 
     return cache.tryGet('youtube:getSubscriptions', () => getSubscriptionsRecusive(part), config.cache.routeExpire, false);
 };
-export async function getSubscriptionsRecusive(part, nextPageToken?) {
+export async function getSubscriptionsRecusive(part: string, nextPageToken?: string) {
     const res = await google.youtube('v3').subscriptions.list({
         auth: youtubeOAuth2Client,
         part,
