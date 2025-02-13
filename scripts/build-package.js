@@ -6,11 +6,11 @@ function buildPackage() {
         // Clean dist
         execSync('rm -rf ./dist', { stdio: 'inherit' });
 
-        // Copy files
-        execSync('cp -r ./lib ./dist', { stdio: 'inherit' });
+        // Compile core files first
+        execSync('tsc --project tsconfig.package.json --verbose', { stdio: 'inherit' });
 
-        // Compile TypeScript files
-        execSync('tsc --build tsconfig.package.json --verbose', { stdio: 'inherit' });
+        // Then copy additional files
+        execSync('cp -r lib/routes lib/utils lib/middleware lib/views dist/', { stdio: 'inherit' });
     } catch {
         process.exit(1);
     }
