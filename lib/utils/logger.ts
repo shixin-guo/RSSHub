@@ -27,15 +27,16 @@ const logger = winston.createLogger({
 //
 if (!config.isPackage) {
     const consoleTransport = new winston.transports.Console({
-        format: winston.format.combine(
-            winston.format.colorize(),
-            winston.format.printf((info) => {
-                const timestamp = config.showLoggerTimestamp ? `[${info.timestamp}] ` : '';
-                return `${timestamp}${info.level}: ${info.message}`;
-            })
-        ),
         silent: process.env.NODE_ENV === 'test',
     }) as winston.transport;
+
+    consoleTransport.format = winston.format.combine(
+        winston.format.colorize(),
+        winston.format.printf((info) => {
+            const timestamp = config.showLoggerTimestamp ? `[${info.timestamp}] ` : '';
+            return `${timestamp}${info.level}: ${info.message}`;
+        })
+    );
 
     logger.add(consoleTransport);
 }
