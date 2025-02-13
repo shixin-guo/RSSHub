@@ -12,7 +12,7 @@ let app: Hono;
 type ServerType = ReturnType<typeof serve>;
 let currentServer: ServerType | undefined;
 
-export async function init(options: RSSHubOptions = {}) {
+const init = async (options: RSSHubOptions = {}) => {
     if (app) {
         logger.info('RSSHub already initialized');
         return;
@@ -27,9 +27,9 @@ export async function init(options: RSSHubOptions = {}) {
         )
     );
     app = (await import('./app')).default;
-}
+};
 
-export const start = (port?: number): ServerType => {
+const start = (port?: number): ServerType => {
     if (!app) {
         throw new Error('RSSHub not initialized. Call init() first');
     }
@@ -47,7 +47,7 @@ export const start = (port?: number): ServerType => {
     return server;
 };
 
-export const stop = async () => {
+const stop = async () => {
     if (currentServer) {
         await currentServer.close();
         currentServer = undefined;
@@ -55,7 +55,7 @@ export const stop = async () => {
     }
 };
 
-export const request = async (path: string) => {
+const request = async (path: string) => {
     if (!app) {
         throw new Error('RSSHub not initialized. Call init() first');
     }
@@ -63,6 +63,5 @@ export const request = async (path: string) => {
     return res.json();
 };
 
-// Re-export types that may be useful for consumers
-
+export { init, start, stop, request };
 export type { Config } from './config';
