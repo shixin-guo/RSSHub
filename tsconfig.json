@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "bundler",
+        "moduleResolution": "node",
         "strict": true,
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
@@ -10,6 +10,7 @@
             "@/*": ["./lib/*"]
         },
         "baseUrl": ".",
+        "rootDir": ".",
         "esModuleInterop": true,
         "noImplicitAny": false,
         "outDir": "./dist",
