@@ -10,7 +10,7 @@ function buildPackage() {
         execSync('tsc -p tsconfig.package.json', { stdio: 'inherit' });
 
         // Copy additional files
-        execSync('cp -r lib/routes lib/utils lib/middleware lib/views dist/', { stdio: 'inherit' });
+        execSync('cp -r lib/routes lib/utils lib/middleware lib/views dist/ && cp package.json dist/', { stdio: 'inherit' });
     } catch {
         process.exit(1);
     }
