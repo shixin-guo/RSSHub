@@ -9,10 +9,13 @@ function buildPackage() {
         // First create dist directory
         execSync('mkdir -p dist', { stdio: 'inherit' });
 
-        // Then transpile core files
-        execSync('babel lib --out-dir dist --extensions ".ts,.tsx" --copy-files --config-file ./babel.config.cjs', { stdio: 'inherit' });
+        // First transpile pkg.ts for the main entry point
+        execSync('babel lib/pkg.ts --out-file dist/pkg.js --extensions ".ts,.tsx" --config-file ./babel.config.cjs', { stdio: 'inherit' });
 
-        // Generate proper exports
+        // Then transpile supporting files
+        execSync('babel lib --ignore "lib/pkg.ts" --out-dir dist --extensions ".ts,.tsx" --copy-files --config-file ./babel.config.cjs', { stdio: 'inherit' });
+
+        // Generate type definitions
         execSync('tsc lib/pkg.ts --declaration --emitDeclarationOnly --outDir dist', { stdio: 'inherit' });
 
         // Copy package.json and clean up test files

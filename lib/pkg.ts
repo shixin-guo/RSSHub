@@ -12,7 +12,7 @@ let app: Hono;
 type ServerType = ReturnType<typeof serve>;
 let currentServer: ServerType | undefined;
 
-export const init = async (options: RSSHubOptions = {}) => {
+export async function init(options: RSSHubOptions = {}) {
     if (app) {
         logger.info('RSSHub already initialized');
         return;
@@ -27,7 +27,7 @@ export const init = async (options: RSSHubOptions = {}) => {
         )
     );
     app = (await import('@/app')).default;
-};
+}
 
 export const start = (port?: number): ServerType => {
     if (!app) {
