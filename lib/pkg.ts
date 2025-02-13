@@ -29,22 +29,24 @@ export const init = async (options: RSSHubOptions = {}) => {
     app = (await import('@/app')).default;
 };
 
-export const start = (port?: number): Promise<ServerType> => {
+export const start = async (port?: number): Promise<ServerType> => {
     if (!app) {
         throw new Error('RSSHub not initialized. Call init() first');
     }
     if (currentServer) {
         logger.info('RSSHub already running');
-        return Promise.resolve(currentServer);
+        return currentServer;
     }
 
-    const server = serve({
-        fetch: app.fetch,
-        port: port || 1200,
-    });
+    const server = await Promise.resolve(
+        serve({
+            fetch: app.fetch,
+            port: port || 1200,
+        })
+    );
     logger.info(`RSSHub package server started on port ${port || 1200}`);
     currentServer = server;
-    return Promise.resolve(server);
+    return server;
 };
 
 export const stop = async () => {
